@@ -1,0 +1,60 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Как сдавать задания</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:820px;margin:0 auto;padding:16px;color:#1c2133;background:#f6f7fb}code,pre{font-family:ui-monospace,Consolas,monospace;background:#eceef6;border-radius:6px}code{padding:1px 5px}pre{padding:10px 14px;overflow-x:auto}pre code{padding:0}a{color:#5b5bd6}blockquote{border-left:4px solid #f59e0b;margin:12px 0;padding:6px 12px;background:#fff4e0}@media (prefers-color-scheme:dark){body{background:#11131b;color:#e7e9f2}code,pre{background:#222636}blockquote{background:#3a2f16}}</style></head><body><h1>Как сдавать задания по МОБАК на GitHub</h1>
+<p>Теория, схемы, разборы, вопросы и ручные задачи — на <a href="https://kstu-mobak.github.io/mobak-course/">сайте курса</a>. Задачи на программирование сдаются через GitHub: после каждой отправки GitHub сам проверяет код и ставит баллы.</p>
+<h2>1. Один раз: аккаунт GitHub</h2>
+<ul>
+<li>Зарегистрируйтесь на <a href="https://github.com">github.com</a> (бесплатно). Имя пользователя выберите понятное, например <code>ivanov-ivan</code>.</li>
+<li>Откройте ссылку-приглашение на задание недели от преподавателя.</li>
+<li>Если попросят, выберите себя в списке группы и нажмите <b>Accept this assignment</b>.</li>
+<li>Через полминуты появится ссылка на <b>ваш личный репозиторий</b> — копию задания, которую видите только вы и преподаватель. Сохраните её.</li>
+</ul>
+<p>На каждую неделю — своё приглашение и свой репозиторий.</p>
+<h2>2. Решаем прямо в браузере (ничего не нужно устанавливать)</h2>
+<ul>
+<li>Откройте свой репозиторий. Задачи лежат в папке <code>tasks/</code>, условия — в описании под списком файлов (README).</li>
+<li>Откройте файл задачи, например <code>tasks/02_lr2_1_gcd.py</code>, и нажмите ✏️ (<b>Edit this file</b>).</li>
+</ul>
+<p>   Удобнее — нажать клавишу <b>.</b> (точка): откроется полноценный редактор кода в браузере.</p>
+<ul>
+<li>Напишите решение вместо заготовки (<code>pass</code> или комментария).</li>
+<li>Нажмите <b>Commit changes…</b> → <b>Commit changes</b>. В редакторе по клавише «.»: значок ветки слева → <b>Commit &amp; Push</b>.</li>
+<li>Через 1–2 минуты откройте вкладку <b>Actions</b> → верхний запуск → <b>run-autograding-tests</b>. У каждой задачи:</li>
+</ul>
+<p>   - ✅ — задача решена, баллы засчитаны;</p>
+<p>   - ❌ — разверните шаг: там номер теста, что ожидалось, что получилось и строка вашего кода с ошибкой.</p>
+<ul>
+<li>Исправляйте и отправляйте снова — сколько угодно раз до срока. Засчитывается последняя отправка.</li>
+</ul>
+<p>Чтобы попробовать код перед отправкой, вставьте его в онлайн-редактор <a href="https://www.programiz.com/python-programming/online-compiler/">Programiz</a> или <a href="https://www.onlinegdb.com/online_python_compiler">OnlineGDB</a> и проверьте на примерах из условия.</p>
+<h2>3. Или решаем на своём компьютере</h2>
+<p>Нужны Python 3.8+ и Git (<a href="https://git-scm.com">git-scm.com</a>). IDE — Thonny, VS Code или PyCharm.</p>
+<pre><code>
+git clone ССЫЛКА_НА_ВАШ_РЕПОЗИТОРИЙ
+cd имя-репозитория
+</code></pre>
+<p>Пишите решение в файлах <code>tasks/…</code>, проверяйте той же проверкой, что и GitHub:</p>
+<pre><code>
+python tests/run.py        # все задачи недели
+python tests/run.py 3      # только задача №3
+</code></pre>
+<p>Когда готово — отправьте:</p>
+<pre><code>
+git add tasks
+git commit -m &quot;Решил задачи 1–3&quot;
+git push
+</code></pre>
+<p>При первом <code>git push</code> Git попросит войти в GitHub — войдите через браузер.</p>
+<h2>4. Правила</h2>
+<ul>
+<li>Не переименовывайте файлы и функции из заготовок — проверка ищет их по имени.</li>
+<li>Не меняйте папки <code>tests/</code> и <code>.github/</code> — преподаватель видит такие изменения, и работа не засчитывается.</li>
+<li>Соблюдайте ограничения из условия (например, в ЛР-2 нельзя <code>math.gcd</code>) — проверка их тоже проверяет.</li>
+<li>Задачи ⭐ дают дополнительные баллы.</li>
+<li>Любое решение может быть проверено устно (2–3 минуты): будьте готовы объяснить свой код строка за строкой.</li>
+</ul>
+<h2>5. Если что-то не так</h2>
+<ul>
+<li><b>Вкладки Actions нет или запуск не начался</b> — подождите минуту и обновите страницу; запуск начинается после каждого коммита.</li>
+<li><b>«Файл не запускается»</b> — в коде синтаксическая ошибка; строка указана в сообщении.</li>
+<li><b>«функция вернула None»</b> — вы не дописали <code>return</code>.</li>
+<li><b>«Превышено время»</b> — бесконечный цикл или лишний <code>input()</code> в задаче-функции.</li>
+<li>Не получается — прочитайте подсказки к задаче (в README и на сайте курса) или спросите на паре.</li></body></html>
